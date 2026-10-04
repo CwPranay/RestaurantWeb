@@ -597,7 +597,13 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
         className="fixed inset-0 w-full h-[100dvh] z-20 flex flex-col justify-end transition-all duration-700 ease-out transform-gpu pointer-events-none"
         style={stage6Style}
       >
-        <div className="w-full cinematic-grad-arrival pt-16 sm:pt-24 md:pt-32 pb-6 sm:pb-10 md:pb-12 px-6 sm:px-12 md:px-16 lg:px-24 overflow-y-auto sm:overflow-visible max-h-[92vh] sm:max-h-none">
+        {/* Full overlay with balanced opacity across the entire frame so background photography remains visible with maximum text clarity */}
+        <div className="absolute inset-0 bg-[#120B09]/60 pointer-events-none -z-10" />
+
+        {/* Upward atmospheric gradient scrim for rich text contrast */}
+        <div className="absolute inset-0 cinematic-grad-arrival pointer-events-none -z-10" />
+
+        <div className="w-full pt-16 sm:pt-24 md:pt-32 pb-6 sm:pb-10 md:pb-12 px-6 sm:px-12 md:px-16 lg:px-24 overflow-y-auto sm:overflow-visible max-h-[92vh] sm:max-h-none relative z-10">
           <div className="max-w-6xl mx-auto w-full space-y-6 sm:space-y-8 pointer-events-auto">
             {/* Grand Arrival Headline & Editorial Actions */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[#C6A36B]/20">
