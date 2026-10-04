@@ -77,6 +77,8 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
     };
   }, [currentTargetId]);
 
+  const lastRenderedImgRef = useRef<HTMLImageElement | null>(null);
+
   // Fast, high-quality canvas frame draw with bulletproof fallbacks
   const drawFrame = useCallback((frameIndex: number) => {
     const canvas = canvasRef.current;
@@ -88,29 +90,33 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
     const idx = Math.min(Math.max(Math.round(frameIndex), 1), totalFrames);
     let img = imgs[idx - 1];
 
-    // Fallback: If target frame is not ready, pick the closest available loaded frame
+    // Fallback: If target frame is not ready, pick the closest adjacent loaded frame within +/- 6 frames
     if (!img || !img.complete || img.naturalWidth === 0) {
-      // 1. Search backwards first (smoothest continuity)
-      for (let i = idx - 1; i >= 0; i--) {
-        const candidate = imgs[i];
-        if (candidate && candidate.complete && candidate.naturalWidth > 0) {
-          img = candidate;
+      let closestImg: HTMLImageElement | null = null;
+      for (let d = 1; d <= 6; d++) {
+        const prevIdx = idx - 1 - d;
+        if (prevIdx >= 0 && imgs[prevIdx]?.complete && imgs[prevIdx].naturalWidth > 0) {
+          closestImg = imgs[prevIdx];
+          break;
+        }
+        const nextIdx = idx - 1 + d;
+        if (nextIdx < totalFrames && imgs[nextIdx]?.complete && imgs[nextIdx].naturalWidth > 0) {
+          closestImg = imgs[nextIdx];
           break;
         }
       }
-      // 2. If no backward frame yet, search forwards
-      if (!img || !img.complete || img.naturalWidth === 0) {
-        for (let i = idx; i < imgs.length; i++) {
-          const candidate = imgs[i];
-          if (candidate && candidate.complete && candidate.naturalWidth > 0) {
-            img = candidate;
-            break;
-          }
-        }
+
+      if (closestImg) {
+        img = closestImg;
+      } else if (lastRenderedImgRef.current) {
+        // Retain the existing frame already on canvas! NEVER jump back to distant frame 1!
+        return;
       }
     }
 
     if (!img || !img.complete || img.naturalWidth === 0) return;
+
+    lastRenderedImgRef.current = img;
 
     const cw = canvas.width;
     const ch = canvas.height;
@@ -227,11 +233,16 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
     };
   }, [totalFrames, handleResize]);
 
-  // Initial draw as soon as frames are supplied
+  // Initial draw and continuous frame redraw when new frames arrive
+  const hasInitializedCanvasRef = useRef(false);
   useEffect(() => {
     if (images.length > 0) {
-      handleResize();
-      drawFrame(1);
+      if (!hasInitializedCanvasRef.current) {
+        hasInitializedCanvasRef.current = true;
+        handleResize();
+      }
+      // Redraw current active frame, NEVER reset to frame 1!
+      drawFrame(Math.round(currentFrameRef.current));
     }
   }, [images, handleResize, drawFrame]);
 

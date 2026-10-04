@@ -5,7 +5,8 @@ import { MenuDrawer } from './components/MenuDrawer';
 import { ReservationModal } from './components/ReservationModal';
 
 const TOTAL_FRAMES = 240;
-const CRITICAL_INITIAL_FRAMES = 12;
+const INITIAL_BURST_FRAMES = 24;
+const READINESS_THRESHOLD = 96; // Priority entrance + all stride frames across entire timeline
 
 export default function App() {
   const [images, setImages] = useState<HTMLImageElement[]>([]);
@@ -27,7 +28,7 @@ export default function App() {
       const pct = (loadedCount / TOTAL_FRAMES) * 100;
       setLoadingProgress(pct);
 
-      if (loadedCount >= CRITICAL_INITIAL_FRAMES) {
+      if (loadedCount >= READINESS_THRESHOLD || loadedCount >= TOTAL_FRAMES) {
         setIsReady(true);
       }
     };
@@ -54,25 +55,38 @@ export default function App() {
     };
 
     const loadAllFramesConcurrently = async () => {
-      // 1. Immediately request the first 16 frames so canvas renders instantly
+      // 1. Immediately request the first 24 frames so initial scroll is buttery smooth
       const initialBatch: Promise<HTMLImageElement>[] = [];
-      for (let i = 1; i <= CRITICAL_INITIAL_FRAMES; i++) {
+      for (let i = 1; i <= INITIAL_BURST_FRAMES; i++) {
         initialBatch.push(loadSingleFrame(i));
       }
       await Promise.all(initialBatch);
       if (isCancelled) return;
       setImages([...loadedImagesRef.current]);
 
-      // 2. High-speed parallel pool for all remaining frames (concurrency: 24)
-      const queue = Array.from(
-        { length: TOTAL_FRAMES - CRITICAL_INITIAL_FRAMES },
-        (_, i) => i + CRITICAL_INITIAL_FRAMES + 1
-      );
-      const concurrency = 24;
+      // 2. Stride distribution: load every 3rd frame across entire 240-frame timeline
+      // This guarantees 100% spatial coverage so no section of the site is ever blank or distant from a loaded frame
+      const strideSet = new Set<number>();
+      const strideQueue: number[] = [];
+      for (let i = INITIAL_BURST_FRAMES + 3; i <= TOTAL_FRAMES; i += 3) {
+        strideQueue.push(i);
+        strideSet.add(i);
+      }
+
+      // 3. Intermediate fill queue for the remaining frames
+      const fillQueue: number[] = [];
+      for (let i = INITIAL_BURST_FRAMES + 1; i <= TOTAL_FRAMES; i++) {
+        if (!strideSet.has(i)) {
+          fillQueue.push(i);
+        }
+      }
+
+      const fullQueue = [...strideQueue, ...fillQueue];
+      const concurrency = 20;
 
       const worker = async () => {
-        while (queue.length > 0 && !isCancelled) {
-          const nextIndex = queue.shift();
+        while (fullQueue.length > 0 && !isCancelled) {
+          const nextIndex = fullQueue.shift();
           if (nextIndex !== undefined) {
             await loadSingleFrame(nextIndex);
           }
@@ -81,19 +95,20 @@ export default function App() {
 
       const workers = Array.from({ length: concurrency }, () => worker());
 
-      // Periodically update the state array so CinematicExperience gets fresh frames smoothly
+      // Periodically update the state array so CinematicExperience receives newly completed frames
       const syncTimer = setInterval(() => {
         if (isCancelled) {
           clearInterval(syncTimer);
           return;
         }
         setImages([...loadedImagesRef.current]);
-      }, 200);
+      }, 150);
 
       await Promise.all(workers);
       clearInterval(syncTimer);
       if (!isCancelled) {
         setImages([...loadedImagesRef.current]);
+        setIsReady(true);
       }
     };
 

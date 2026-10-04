@@ -15,14 +15,14 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
   const [fadeExit, setFadeExit] = useState(false);
 
   useEffect(() => {
-    if (isReady || progress >= 30) {
+    if ((isReady && progress >= 40) || progress >= 95) {
       const timer = setTimeout(() => {
         setFadeExit(true);
-        setTimeout(onEnter, 400);
+        setTimeout(onEnter, 450);
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [isReady]);
+  }, [isReady, progress, onEnter]);
 
   const handleImmediateEnter = () => {
     setFadeExit(true);
