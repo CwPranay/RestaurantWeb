@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar, Clock, Users, CheckCircle2, MessageSquare, Phone, ArrowUpRight, Sparkles } from 'lucide-react';
+import { X, CheckCircle2, Phone } from 'lucide-react';
 import { ReservationDetails } from '../types';
 
 interface ReservationModalProps {
@@ -120,15 +120,15 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
 
         {submitted ? (
           <div className="py-6 sm:py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-950/70 border border-emerald-500/50 flex items-center justify-center mx-auto text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)]">
-              <CheckCircle2 className="w-8 h-8" />
+            <div className="w-14 h-14 rounded-full bg-[#2B1B15] border border-[#C6A36B]/40 flex items-center justify-center mx-auto text-[#C6A36B] shadow-[0_0_20px_rgba(198,163,107,0.2)]">
+              <CheckCircle2 className="w-7 h-7 text-[#C6A36B]" />
             </div>
 
             <div className="space-y-1">
               <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#C6A36B] block">
                 Forwarded to Host Desk
               </span>
-              <h3 className="font-serif text-2xl text-[#F4EBDD]">Reservation Sent via WhatsApp</h3>
+              <h3 className="font-serif text-2xl text-[#F4EBDD]">Reservation Request Sent</h3>
             </div>
 
             <p className="text-xs sm:text-sm text-[#F4EBDD]/80 max-w-sm mx-auto font-light leading-relaxed">
@@ -142,16 +142,15 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                   href={lastWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-sans tracking-wider uppercase bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold transition-all inline-flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-sans tracking-wider uppercase border border-[#C6A36B] bg-[#18100D] hover:bg-[#F4EBDD] hover:text-[#18100D] text-[#F4EBDD] transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
                   <span>Open WhatsApp Again</span>
                 </a>
               )}
 
               <a
                 href="tel:+919371519999"
-                className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-sans tracking-wider uppercase bg-[#2B1B15] hover:bg-[#38241D] text-[#C6A36B] border border-[#C6A36B]/40 transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-sans tracking-wider uppercase bg-[#2B1B15] hover:bg-[#38241D] text-[#C6A36B] border border-[#C6A36B]/40 transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Host Desk</span>
@@ -307,21 +306,12 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                 />
               </div>
 
-              {/* Instant WhatsApp Guarantee Badge */}
-              <div className="p-2.5 rounded-xl bg-[#120B09]/90 border border-[#25D366]/30 flex items-center gap-2 text-[11px] text-[#F4EBDD]/90">
-                <div className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shrink-0" />
-                <span>
-                  Instant 1-tap confirmation with Host Desk on WhatsApp (+91 93715 19999).
-                </span>
-              </div>
-
-              <div className="pt-1">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 bg-[#25D366] hover:bg-[#20ba59] text-black font-sans font-semibold text-xs uppercase tracking-[0.2em] transition-all cursor-pointer shadow-[0_4px_16px_rgba(37,211,102,0.3)] hover:shadow-[0_6px_22px_rgba(37,211,102,0.45)] flex items-center justify-center gap-2"
+                  className="w-full py-3 border border-[#C6A36B] hover:border-[#F4EBDD] bg-[#18100D] hover:bg-[#F4EBDD] hover:text-[#18100D] text-[#F4EBDD] text-xs font-sans font-medium uppercase tracking-[0.25em] transition-all cursor-pointer shadow-md"
                 >
-                  <MessageSquare className="w-4 h-4 fill-black" />
-                  <span>Confirm via WhatsApp ↗</span>
+                  Confirm Reservation
                 </button>
               </div>
             </form>
