@@ -77,12 +77,13 @@ html, body {
 .cinematic-grad-arrival {
   background: 
     linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(18, 11, 9, 0.40) 25%,
-      rgba(18, 11, 9, 0.88) 55%,
-      rgba(18, 11, 9, 0.98) 85%,
-      #120B09 100%
+      to top,
+      #120B09 0%,
+      rgba(18, 11, 9, 0.98) 28%,
+      rgba(18, 11, 9, 0.90) 54%,
+      rgba(22, 13, 11, 0.68) 74%,
+      rgba(22, 13, 11, 0.30) 88%,
+      transparent 100%
     );
 }
 
@@ -149,8 +150,10 @@ html, body {
       linear-gradient(
         to top,
         #120B09 0%,
-        rgba(18, 11, 9, 0.96) 35%,
-        rgba(28, 18, 15, 0.80) 65%,
+        rgba(18, 11, 9, 0.98) 28%,
+        rgba(18, 11, 9, 0.86) 52%,
+        rgba(22, 13, 11, 0.55) 72%,
+        rgba(22, 13, 11, 0.20) 88%,
         transparent 100%
       );
   }

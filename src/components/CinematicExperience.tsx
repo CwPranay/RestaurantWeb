@@ -299,7 +299,7 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
       </div>
 
       {/* TOP FLOATING NAVIGATION */}
-      <header className="fixed top-0 left-0 right-0 z-40 py-2 sm:py-3.5 px-3 sm:px-8 md:px-14 flex items-center justify-between bg-gradient-to-b from-[#120B09]/95 via-[#120B09]/75 to-transparent border-b border-[#C6A36B]/15 backdrop-blur-[2px]">
+      <header className="fixed top-0 left-0 right-0 z-40 py-2 sm:py-3.5 px-3 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between bg-gradient-to-b from-[#120B09]/95 via-[#120B09]/75 to-transparent border-b border-[#C6A36B]/15 backdrop-blur-[2px]">
         {/* Subtle continuous scroll progress hairline along the header */}
         <div
           className="absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-[#C6A36B] via-[#C76A27] to-[#C6A36B] pointer-events-none transition-all duration-75"
@@ -313,9 +313,9 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
           <BrandLogo variant="minimal" />
         </button>
 
-        <nav className="flex items-center gap-2 sm:gap-8 md:gap-10 text-[11px] font-sans font-medium tracking-[0.16em] sm:tracking-[0.25em] uppercase text-[#F4EBDD]/85 shrink-0">
+        <nav className="flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 text-[10px] lg:text-[11px] font-sans font-medium tracking-[0.16em] sm:tracking-[0.22em] uppercase text-[#F4EBDD]/85 shrink-0">
           {/* Dynamic Scroll Section Links with Smooth Moving Underline Indicator */}
-          <div className="relative hidden sm:flex items-center gap-6 sm:gap-8 md:gap-10 py-1">
+          <div className="relative hidden md:flex items-center gap-4 lg:gap-8 py-1">
             {NAV_SECTIONS.map((section) => {
               const isActive = activeSectionId === section.id;
               return (
@@ -592,68 +592,83 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
         </div>
       </div>
 
-      {/* STAGE 6: ARRIVAL & HOSPITALITY CONCLUSION (Art Directed Responsive Layout) */}
+      {/* STAGE 6: GRAND ARRIVAL & EDITORIAL HOSPITALITY CONCLUSION */}
       <div
         className="fixed inset-0 w-full h-[100dvh] z-20 flex flex-col justify-end transition-all duration-700 ease-out transform-gpu pointer-events-none"
         style={stage6Style}
       >
-        <div className="w-full cinematic-grad-arrival pt-14 sm:pt-24 pb-4 sm:pb-8 px-5 sm:px-10 md:px-16 lg:px-24 overflow-y-auto sm:overflow-visible max-h-[88vh] sm:max-h-none">
-          <div className="max-w-6xl mx-auto w-full space-y-4 sm:space-y-6 pointer-events-auto">
-            {/* Headline & Actions */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-[#C6A36B]/20">
-              <div>
-                <span className="text-[10px] font-mono tracking-[0.35em] sm:tracking-[0.4em] text-[#C6A36B] uppercase block mb-1.5 sm:mb-2 drop-shadow-md">
-                  Welcome to Namaste Kalyan • Global Kitchen & Bar
-                </span>
-                <h2 className="font-luxury text-[clamp(1.75rem,5.5vw,3.75rem)] text-[#F4EBDD] font-light leading-none drop-shadow-[0_4px_24px_rgba(18,11,9,0.98)]">
+        <div className="w-full cinematic-grad-arrival pt-16 sm:pt-24 md:pt-32 pb-6 sm:pb-10 md:pb-12 px-6 sm:px-12 md:px-16 lg:px-24 overflow-y-auto sm:overflow-visible max-h-[92vh] sm:max-h-none">
+          <div className="max-w-6xl mx-auto w-full space-y-6 sm:space-y-8 pointer-events-auto">
+            {/* Grand Arrival Headline & Editorial Actions */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[#C6A36B]/20">
+              <div className="space-y-1.5 sm:space-y-2">
+                <span className="text-[10px] sm:text-xs font-mono tracking-[0.35em] sm:tracking-[0.45em] text-[#C6A36B] uppercase block drop-shadow-md">
                   Welcome to Namaste Kalyan
+                </span>
+                <h2 className="font-luxury text-[clamp(2.3rem,6.8vw,4.8rem)] text-[#F4EBDD] font-normal leading-[1.05] tracking-wide drop-shadow-[0_4px_28px_rgba(18,11,9,0.98)]">
+                  Your Table Awaits.
                 </h2>
-                <p className="font-serif italic text-xs sm:text-sm md:text-base text-[#C6A36B] mt-1.5 sm:mt-2 drop-shadow-md">
-                  Global Kitchen & Bar • Kalyan (West), Maharashtra
+                <p className="font-serif italic text-xs sm:text-sm md:text-base text-[#F4EBDD]/80 drop-shadow-md">
+                  Global Kitchen & Bar · Kalyan (West), Maharashtra
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 sm:gap-5 pt-1 sm:pt-0">
+              <div className="flex flex-wrap items-center gap-5 sm:gap-7 pt-2 md:pt-0">
                 <button
                   onClick={onOpenMenu}
-                  className="text-xs font-sans uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F4EBDD] hover:text-[#C6A36B] pb-1 border-b border-transparent hover:border-[#C6A36B] transition-all cursor-pointer drop-shadow-md"
+                  className="text-xs sm:text-sm font-sans uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F4EBDD] hover:text-[#C6A36B] pb-1 border-b border-[#C6A36B]/50 hover:border-[#C6A36B] transition-all cursor-pointer drop-shadow-md"
                 >
                   View Menu
                 </button>
 
                 <button
                   onClick={onOpenReservation}
-                  className="px-5 sm:px-7 py-2.5 sm:py-3 bg-[#C6A36B] hover:bg-white text-[#120B09] font-sans font-medium text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] transition-all cursor-pointer shadow-lg whitespace-nowrap"
+                  className="px-6 sm:px-8 py-2.5 sm:py-3.5 bg-[#C6A36B] hover:bg-[#F4EBDD] text-[#120B09] font-sans font-medium text-xs sm:text-sm uppercase tracking-[0.22em] transition-all duration-300 cursor-pointer shadow-[0_4px_20px_rgba(198,163,107,0.25)] hover:shadow-[0_6px_25px_rgba(244,235,221,0.35)] whitespace-nowrap"
                 >
                   Reserve a Table
                 </button>
               </div>
             </div>
 
-            {/* Details Row — Responsive Vertical Art Direction */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-8 text-xs font-sans pt-1">
-              <div>
-                <span className="text-[10px] font-mono tracking-widest text-[#C6A36B] uppercase block mb-1">
+            {/* Information Area — Three Distinct Editorial Groups */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-14 pt-1 text-xs font-sans">
+              {/* Group 1: Visit Us */}
+              <div className="space-y-1.5">
+                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm">
+                  Visit Us
+                </h3>
+                <p className="text-[#F4EBDD] font-light text-xs sm:text-sm leading-relaxed">
+                  Kalyan (West), Maharashtra
+                </p>
+                <p className="text-[#F4EBDD]/70 font-light text-[11px] sm:text-xs">
+                  7 mins from Kalyan Railway Station
+                </p>
+                <p className="text-[#C6A36B] font-light text-[11px] sm:text-xs pt-0.5">
+                  Complimentary Valet Attendants
+                </p>
+              </div>
+
+              {/* Group 2: Hours of Hospitality */}
+              <div className="space-y-1.5">
+                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm">
                   Hours of Hospitality
-                </span>
-                <span className="text-[#F4EBDD] block font-light text-xs sm:text-sm">Lunch: 12:00 PM – 04:00 PM</span>
-                <span className="text-[#F4EBDD] block font-light text-xs sm:text-sm">Dinner: 07:00 PM – 12:00 AM</span>
-                <span className="text-[#F4EBDD]/60 text-[11px] sm:text-xs block mt-0.5">Open 7 Days a Week</span>
+                </h3>
+                <p className="text-[#F4EBDD] font-light text-xs sm:text-sm leading-relaxed">
+                  Lunch: 12:00 PM – 04:00 PM
+                </p>
+                <p className="text-[#F4EBDD] font-light text-xs sm:text-sm leading-relaxed">
+                  Dinner: 07:00 PM – 12:00 AM
+                </p>
+                <p className="text-[#F4EBDD]/60 font-light text-[11px] sm:text-xs pt-0.5">
+                  Open 7 Days a Week
+                </p>
               </div>
 
-              <div>
-                <span className="text-[10px] font-mono tracking-widest text-[#C6A36B] uppercase block mb-1">
-                  Destination & Access
-                </span>
-                <span className="text-[#F4EBDD] block font-light text-xs sm:text-sm">Kalyan (West), Maharashtra</span>
-                <span className="text-[#F4EBDD]/60 text-[11px] sm:text-xs block mt-0.5">7 mins from Kalyan Railway Station</span>
-                <span className="text-[#C6A36B] text-[11px] sm:text-xs block mt-0.5">Complimentary Valet Attendants</span>
-              </div>
-
-              <div>
-                <span className="text-[10px] font-mono tracking-widest text-[#C6A36B] uppercase block mb-1">
+              {/* Group 3: Direct Host Contact */}
+              <div className="space-y-1.5">
+                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm">
                   Direct Host Contact
-                </span>
+                </h3>
                 <a
                   href="tel:+919876543210"
                   className="text-[#F4EBDD] hover:text-[#C6A36B] transition-colors block font-light text-xs sm:text-sm"
@@ -664,7 +679,7 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
                   href="https://maps.google.com/?q=Namaste+Kalyan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C6A36B] hover:text-white transition-colors text-[11px] sm:text-xs flex items-center gap-1.5 mt-1 underline underline-offset-4"
+                  className="text-[#C6A36B] hover:text-[#F4EBDD] transition-colors text-[11px] sm:text-xs inline-flex items-center gap-1.5 pt-1 border-b border-[#C6A36B]/40 hover:border-[#F4EBDD]"
                 >
                   <span>Navigate via Google Maps</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -672,10 +687,17 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
               </div>
             </div>
 
-            {/* Bottom Line */}
-            <div className="pt-3 sm:pt-4 border-t border-[#2B1B15] flex flex-col sm:flex-row items-center justify-between gap-1 text-[9px] sm:text-[10px] text-[#F4EBDD]/40 font-mono tracking-widest uppercase">
-              <span>© {new Date().getFullYear()} Namaste Kalyan. All rights reserved.</span>
-              <span className="text-[#C6A36B]">A Cinematic Dining Experience</span>
+            {/* Final Closing Signature */}
+            <div className="pt-6 sm:pt-8 border-t border-[#C6A36B]/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 text-[10px] font-mono tracking-[0.25em] uppercase text-[#F4EBDD]/50">
+              <span className="font-luxury text-sm tracking-[0.35em] text-[#C6A36B] font-light">
+                NAMASTE KALYAN
+              </span>
+              <span className="text-[9.5px] sm:text-[10px] text-[#F4EBDD]/40">
+                © 2026 NAMASTE KALYAN. ALL RIGHTS RESERVED.
+              </span>
+              <span className="text-[9.5px] sm:text-[10px] tracking-[0.3em] text-[#C6A36B]/70">
+                A CINEMATIC DINING EXPERIENCE
+              </span>
             </div>
           </div>
         </div>
