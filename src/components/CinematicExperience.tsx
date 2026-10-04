@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
-import { ChevronDown, ArrowRight, ArrowUpRight, Utensils, Sparkles } from 'lucide-react';
+import { ChevronDown, ArrowRight, ArrowUpRight, Utensils, Sparkles, MapPin, Phone, Star, X } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 interface CinematicExperienceProps {
@@ -29,6 +29,7 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
   imagesRef.current = images;
 
   const [uiProgress, setUiProgress] = useState<number>(0);
+  const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
   // Dynamic Navigation Active Section Tracking & Moving Underline
   const navItemRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -372,8 +373,10 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
         {/* Natural atmospheric lighting scrim */}
         <div className="absolute inset-0 cinematic-grad-opening pointer-events-none -z-10" />
 
-        <div className="text-[9.5px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.45em] uppercase text-[#C6A36B] font-mono font-light drop-shadow-md text-center max-w-full px-2">
-          Kalyan (West) • Maharashtra
+        <div className="text-[9.5px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.35em] uppercase text-[#C6A36B] font-mono font-light drop-shadow-md text-center max-w-full px-2 flex items-center justify-center gap-2">
+          <span>Khadakpada • Kalyan (West)</span>
+          <span className="text-[#C6A36B]/40">•</span>
+          <span className="inline-flex items-center gap-1 text-[#F4EBDD]/90"><Star className="w-3 h-3 text-[#C6A36B] fill-[#C6A36B]" /> 4.4 (954 Reviews)</span>
         </div>
 
         <div className="flex flex-col items-center text-center my-auto max-w-xl w-full px-3 sm:px-6 pointer-events-auto">
@@ -608,18 +611,27 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
             {/* Grand Arrival Headline & Editorial Actions */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[#C6A36B]/20">
               <div className="space-y-1.5 sm:space-y-2">
-                <span className="text-[10px] sm:text-xs font-mono tracking-[0.35em] sm:tracking-[0.45em] text-[#C6A36B] uppercase block drop-shadow-md">
-                  Welcome to Namaste Kalyan
-                </span>
+                <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs font-mono tracking-[0.25em] sm:tracking-[0.35em] text-[#C6A36B] uppercase drop-shadow-md">
+                  <span>Welcome to Namaste Kalyan</span>
+                  <span className="text-[#C6A36B]/40">•</span>
+                  <span className="inline-flex items-center gap-1 text-[#F4EBDD]/90 font-normal">
+                    <Star className="w-3 h-3 text-[#C6A36B] fill-[#C6A36B]" />
+                    <span>4.4 (954 Google Reviews)</span>
+                  </span>
+                </div>
                 <h2 className="font-luxury text-[clamp(2.3rem,6.8vw,4.8rem)] text-[#F4EBDD] font-normal leading-[1.05] tracking-wide drop-shadow-[0_4px_28px_rgba(18,11,9,0.98)]">
                   Your Table Awaits.
                 </h2>
-                <p className="font-serif italic text-xs sm:text-sm md:text-base text-[#F4EBDD]/80 drop-shadow-md">
-                  Global Kitchen & Bar · Kalyan (West), Maharashtra
-                </p>
+                <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm md:text-base text-[#F4EBDD]/80 drop-shadow-md font-serif italic">
+                  <span>Global Kitchen & Bar</span>
+                  <span className="text-[#C6A36B]/50">·</span>
+                  <span>RockMount Residency, Khadakpada, Kalyan (West)</span>
+                  <span className="text-[#C6A36B]/50 hidden sm:inline">·</span>
+                  <span className="font-sans not-italic text-[11px] sm:text-xs text-[#C6A36B] tracking-wider hidden sm:inline">नमस्ते कल्याण</span>
+                </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-5 sm:gap-7 pt-2 md:pt-0">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2 md:pt-0">
                 <button
                   onClick={onOpenMenu}
                   className="text-xs sm:text-sm font-sans uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F4EBDD] hover:text-[#C6A36B] pb-1 border-b border-[#C6A36B]/50 hover:border-[#C6A36B] transition-all cursor-pointer drop-shadow-md"
@@ -640,18 +652,29 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-14 pt-1 text-xs font-sans">
               {/* Group 1: Visit Us */}
               <div className="space-y-1.5">
-                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm">
-                  Visit Us
+                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#C6A36B]" />
+                  <span>Visit Us</span>
                 </h3>
                 <p className="text-[#F4EBDD] font-light text-xs sm:text-sm leading-relaxed">
-                  Kalyan (West), Maharashtra
+                  RockMount Residency, 4th Floor
                 </p>
-                <p className="text-[#F4EBDD]/70 font-light text-[11px] sm:text-xs">
-                  7 mins from Kalyan Railway Station
+                <p className="text-[#F4EBDD]/90 font-light text-xs sm:text-sm leading-relaxed">
+                  Khadakpada Circle, Kalyan (West), MH 421301
+                </p>
+                <p className="text-[#F4EBDD]/60 font-light text-[11px] sm:text-xs">
+                  Landmark: Gokul Nagari NX, Gandhar Nagar
                 </p>
                 <p className="text-[#C6A36B] font-light text-[11px] sm:text-xs pt-0.5">
                   Complimentary Valet Attendants
                 </p>
+                <button
+                  onClick={() => setIsMapModalOpen(true)}
+                  className="text-[#C6A36B] hover:text-[#F4EBDD] transition-colors text-[11px] sm:text-xs inline-flex items-center gap-1 pt-1.5 underline underline-offset-4 cursor-pointer"
+                >
+                  <span>View Embedded Google Map</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </button>
               </div>
 
               {/* Group 2: Hours of Hospitality */}
@@ -663,33 +686,40 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
                   Lunch: 12:00 PM – 04:00 PM
                 </p>
                 <p className="text-[#F4EBDD] font-light text-xs sm:text-sm leading-relaxed">
-                  Dinner: 07:00 PM – 12:00 AM
+                  Dinner: 07:00 PM – 12:00 AM (Midnight)
                 </p>
                 <p className="text-[#F4EBDD]/60 font-light text-[11px] sm:text-xs pt-0.5">
                   Open 7 Days a Week
+                </p>
+                <p className="text-[#C6A36B] font-mono text-[10px] tracking-wider pt-0.5">
+                  Dine-in · Kerbside Pickup · Delivery
                 </p>
               </div>
 
               {/* Group 3: Direct Host Contact */}
               <div className="space-y-1.5">
-                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm">
-                  Direct Host Contact
+                <h3 className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#C6A36B] mb-2 font-medium drop-shadow-sm flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-[#C6A36B]" />
+                  <span>Direct Host Contact</span>
                 </h3>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919371519999"
                   className="text-[#F4EBDD] hover:text-[#C6A36B] transition-colors block font-light text-xs sm:text-sm"
                 >
-                  +91 (0251) Host Reception Desk
+                  +91 93715 19999 (Reception Desk)
                 </a>
                 <a
-                  href="https://maps.google.com/?q=Namaste+Kalyan"
+                  href="https://maps.app.goo.gl/UqDjUJk4U7ZSRtvE9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#C6A36B] hover:text-[#F4EBDD] transition-colors text-[11px] sm:text-xs inline-flex items-center gap-1.5 pt-1 border-b border-[#C6A36B]/40 hover:border-[#F4EBDD]"
                 >
-                  <span>Navigate via Google Maps</span>
+                  <span>Navigate via Google Maps App</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
+                <span className="text-[#F4EBDD]/50 text-[10.5px] font-mono block pt-0.5">
+                  Plus Code: 743P+9P Kalyan, Maharashtra
+                </span>
               </div>
             </div>
 
@@ -708,6 +738,77 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Interactive Google Maps Embed Modal */}
+      {isMapModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 pointer-events-auto"
+          onClick={() => setIsMapModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-3xl bg-[#1C120F] border border-[#C6A36B]/30 rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#C6A36B]/20 bg-[#120B09]">
+              <div>
+                <span className="text-[10px] font-mono tracking-[0.25em] text-[#C6A36B] uppercase block">
+                  Location & Directions
+                </span>
+                <h3 className="font-serif text-base sm:text-lg text-[#F4EBDD]">
+                  Namaste Kalyan - Global Kitchen & Bar
+                </h3>
+                <p className="text-[11px] sm:text-xs text-[#F4EBDD]/70 font-light mt-0.5">
+                  RockMount Residency, 4th, Khadakpada Cir, Kalyan, Maharashtra 421301
+                </p>
+              </div>
+              <button
+                onClick={() => setIsMapModalOpen(false)}
+                className="p-2 rounded-full hover:bg-[#2B1B15] text-[#F4EBDD]/70 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close Map"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="w-full aspect-[4/3] sm:aspect-[16/9] max-h-[60vh] bg-black">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.7607293171027!2d73.13420077512463!3d19.253415846379117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be797a947c4d521%3A0xa1460c122cb5b178!2sNamaste%20Kalyan%20-%20Global%20Kitchen%20%26%20Bar!5e1!3m2!1sen!2sin!4v1791098611257!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Namaste Kalyan - Google Maps"
+              />
+            </div>
+
+            <div className="p-3.5 sm:p-4 bg-[#120B09] flex flex-wrap items-center justify-between gap-3 border-t border-[#C6A36B]/20 text-xs">
+              <div className="flex items-center gap-3">
+                <span className="text-[#F4EBDD]/80 font-mono text-[11px]">
+                  Plus Code: 743P+9P Kalyan
+                </span>
+                <span className="text-[#C6A36B]/50">•</span>
+                <a
+                  href="tel:+919371519999"
+                  className="text-[#C6A36B] hover:text-white font-mono text-[11px]"
+                >
+                  +91 93715 19999
+                </a>
+              </div>
+              <a
+                href="https://maps.app.goo.gl/UqDjUJk4U7ZSRtvE9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-[#C6A36B] hover:bg-white text-[#120B09] font-sans font-medium text-xs uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>Open in Google Maps App</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* CONTINUOUS SCROLL TRACK (550vh) — Every turn of the scroll wheel immediately advances the camera */}
       <div className="relative w-full h-[550vh] pointer-events-none" />

@@ -93,12 +93,17 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
         ) : (
           <div>
             <div className="mb-6">
-              <span className="text-[10px] tracking-[0.25em] uppercase text-[#C6A36B] font-mono block mb-1">
-                Namaste Kalyan
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] tracking-[0.25em] uppercase text-[#C6A36B] font-mono block mb-1">
+                  Namaste Kalyan • Khadakpada
+                </span>
+                <span className="text-[10px] text-[#C6A36B] font-mono">
+                  +91 93715 19999
+                </span>
+              </div>
               <h3 className="font-serif text-2xl text-[#F4EBDD]">Reserve a Table</h3>
-              <p className="text-xs text-[#F4EBDD]/60 font-light mt-0.5">
-                Join us for lunch or dinner in Kalyan.
+              <p className="text-xs text-[#F4EBDD]/70 font-light mt-0.5">
+                RockMount Residency, Khadakpada Circle, Kalyan (West) · Open till 12:00 AM
               </p>
             </div>
 

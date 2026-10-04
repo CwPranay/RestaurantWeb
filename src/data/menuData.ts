@@ -80,19 +80,19 @@ export const MENU_ITEMS: Dish[] = [
   },
   {
     id: '5',
-    name: 'Crispy Asian Spring Rolls',
-    description: 'Delicate hand-rolled rice pastry filled with julienned wok-tossed market vegetables, shiitake, and glass noodles, served with sweet chili dipping sauce.',
+    name: 'Tandoori Chicken Kalmi Kebab',
+    description: 'Tender chicken drumsticks marinated overnight in hung curd, Kashmiri deghi mirch, and royal spices, chargrilled to succulent perfection in the clay tandoor.',
     category: 'Starters',
-    price: 240,
-    image: 'https://images.unsplash.com/photo-1620189507351-0e9b6c651e9e?w=800&q=80',
-    type: 'veg',
-    rating: 4.5,
-    prepTime: '12 min',
-    popular: false,
+    price: 460,
+    image: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=800&q=80',
+    type: 'non-veg',
+    rating: 4.9,
+    prepTime: '15 min',
+    popular: true,
     available: true,
-    spiceLevel: 0,
-    tags: ['Crunchy', 'Appetizer'],
-    pairing: 'Ginger Mint Cooler'
+    spiceLevel: 2,
+    tags: ['Tandoor Specialty', 'Guest Favorite'],
+    pairing: 'Chilled Craft Brew or Mint Chaas'
   },
 
   // Wood-Fired Pizza
@@ -638,19 +638,19 @@ export const MENU_ITEMS: Dish[] = [
   },
   {
     id: '39',
-    name: 'Artisan Gelato Trio',
-    description: 'Three handcrafted scoops: Bronte Pistachio, Madagascar Vanilla Bean, and Dark Belgian Chocolate, served in crisp tuile cup.',
+    name: 'Golden Sizzling Fried Ice Cream',
+    description: 'Crispy warm golden crumb crust enveloping a frozen core of Madagascar vanilla bean ice cream, drizzled with hot Belgian chocolate and toasted pistachio.',
     category: 'Desserts',
     price: 290,
     image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80',
     type: 'veg',
-    rating: 4.7,
-    prepTime: '3 min',
-    popular: false,
+    rating: 4.9,
+    prepTime: '5 min',
+    popular: true,
     available: true,
     spiceLevel: 0,
-    tags: ['Artisan Ice Cream', 'Refreshing'],
-    pairing: 'Espresso'
+    tags: ['Signature Dessert', 'Most Loved'],
+    pairing: 'Hot Espresso or Darjeeling Tea'
   },
   {
     id: '40',
