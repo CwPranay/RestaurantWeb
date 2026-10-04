@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-espresso: #1C120F;
+  --color-espresso-dark: #120B09;
+  --color-walnut: #2B1B15;
+  --color-walnut-card: rgba(36, 24, 20, 0.88);
+  --color-terracotta: #9D4327;
+  --color-velvet: #C76A27;
+  --color-ivory: #F4EBDD;
+  --color-gold: #C6A36B;
+  --color-foliage: #344D37;
+  --color-electric-blue: #3557E8;
+
+  --font-luxury: "Italiana", "Marcellus", Georgia, serif;
+  --font-serif: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Italiana", serif;
+  --font-brand: "Cinzel", "Cinzel Decorative", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  background-color: #1C120F;
+  color: #F4EBDD;
+  margin: 0;
+  padding: 0;
+}
+
+/* Discreet luxury scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Localized feathered cinematic gradients — invisible backdrops for maximum text legibility */
+.cinematic-grad-opening {
+  background: radial-gradient(
+    ellipse 75% 65% at 50% 50%,
+    rgba(18, 11, 9, 0.88) 0%,
+    rgba(28, 18, 15, 0.72) 40%,
+    rgba(28, 18, 15, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+.cinematic-grad-left {
+  background: radial-gradient(
+    ellipse 70% 60% at 24% 50%,
+    rgba(18, 11, 9, 0.92) 0%,
+    rgba(28, 18, 15, 0.78) 35%,
+    rgba(28, 18, 15, 0.35) 65%,
+    transparent 100%
+  ),
+  linear-gradient(
+    to right,
+    rgba(18, 11, 9, 0.88) 0%,
+    rgba(18, 11, 9, 0.68) 28%,
+    rgba(28, 18, 15, 0.25) 58%,
+    transparent 78%
+  );
+}
+
+.cinematic-grad-right {
+  background: radial-gradient(
+    ellipse 70% 60% at 76% 50%,
+    rgba(18, 11, 9, 0.92) 0%,
+    rgba(28, 18, 15, 0.78) 35%,
+    rgba(28, 18, 15, 0.35) 65%,
+    transparent 100%
+  ),
+  linear-gradient(
+    to left,
+    rgba(18, 11, 9, 0.88) 0%,
+    rgba(18, 11, 9, 0.68) 28%,
+    rgba(28, 18, 15, 0.25) 58%,
+    transparent 78%
+  );
+}
+
+.cinematic-grad-arrival {
+  background: radial-gradient(
+    ellipse 85% 70% at 50% 90%,
+    rgba(18, 11, 9, 0.96) 0%,
+    rgba(28, 18, 15, 0.85) 45%,
+    rgba(28, 18, 15, 0.4) 75%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 767px) {
+  .cinematic-grad-left,
+  .cinematic-grad-right {
+    background: radial-gradient(
+      ellipse 92% 78% at 50% 50%,
+      rgba(18, 11, 9, 0.92) 0%,
+      rgba(28, 18, 15, 0.78) 45%,
+      rgba(28, 18, 15, 0.3) 78%,
+      transparent 100%
+    );
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: #120B09;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #38241D;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C76A27;
+}
+
+::selection {
+  background-color: #C76A27;
+  color: #F4EBDD;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
