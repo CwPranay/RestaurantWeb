@@ -491,6 +491,16 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
             <span className="text-[#C6A36B]/50">•</span>
             <span>BOTANICAL SANCTUARY</span>
           </div>
+
+          <div className="mt-5 sm:mt-6 flex items-center justify-start md:justify-end">
+            <button
+              onClick={() => scrollToProgress(0.64)}
+              className="text-xs font-sans uppercase tracking-[0.25em] text-[#F4EBDD] hover:text-[#C6A36B] transition-colors flex items-center gap-2 cursor-pointer pb-1 border-b border-[#C6A36B]/80 hover:border-[#C6A36B] drop-shadow-md"
+            >
+              <span>Explore The Velvet Lounge</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#C6A36B]" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -527,13 +537,20 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
             </p>
           </div>
 
-          <div className="mt-5 sm:mt-6">
+          <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
             <button
-              onClick={onOpenReservation}
+              onClick={() => scrollToProgress(0.82)}
               className="text-xs font-sans uppercase tracking-[0.25em] text-[#F4EBDD] hover:text-[#C76A27] transition-colors flex items-center gap-2 cursor-pointer pb-1 border-b border-[#C76A27] hover:border-white drop-shadow-md"
             >
-              <span>Reserve Table In This Zone</span>
+              <span>Discover Our Cuisine</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#C76A27]" />
+            </button>
+            <span className="text-[#C76A27]/40 hidden sm:inline">•</span>
+            <button
+              onClick={onOpenReservation}
+              className="text-xs font-sans uppercase tracking-[0.2em] text-[#F4EBDD]/80 hover:text-white transition-colors cursor-pointer pb-1 border-b border-transparent hover:border-[#F4EBDD]"
+            >
+              Reserve In This Zone
             </button>
           </div>
         </div>
@@ -583,13 +600,20 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
             </div>
           </div>
 
-          <div className="mt-6 sm:mt-7 flex items-center justify-start md:justify-end gap-4">
+          <div className="mt-6 sm:mt-7 flex flex-wrap items-center justify-start md:justify-end gap-4 sm:gap-6">
+            <button
+              onClick={() => scrollToProgress(1.0)}
+              className="text-xs font-sans uppercase tracking-[0.25em] text-[#F4EBDD] hover:text-[#C6A36B] transition-colors flex items-center gap-2 cursor-pointer pb-1 border-b border-[#C6A36B] hover:border-white drop-shadow-md"
+            >
+              <span>Arrive at Your Table</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#C6A36B]" />
+            </button>
+            <span className="text-[#C6A36B]/40 hidden sm:inline">•</span>
             <button
               onClick={onOpenMenu}
-              className="text-xs font-sans uppercase tracking-[0.25em] text-white hover:text-[#C6A36B] transition-colors flex items-center gap-2 cursor-pointer pb-1 border-b border-[#C6A36B] hover:border-white drop-shadow-md"
+              className="text-xs font-sans uppercase tracking-[0.2em] text-[#F4EBDD]/80 hover:text-white transition-colors cursor-pointer pb-1 border-b border-transparent hover:border-[#F4EBDD]"
             >
-              <span>Explore Full 40-Dish Menu</span>
-              <ArrowRight className="w-4 h-4 text-[#C6A36B]" />
+              Explore 40-Dish Menu
             </button>
           </div>
         </div>
@@ -728,6 +752,13 @@ export const CinematicExperience: React.FC<CinematicExperienceProps> = ({
               <span className="font-luxury text-sm tracking-[0.35em] text-[#C6A36B] font-light">
                 NAMASTE KALYAN
               </span>
+              <button
+                onClick={() => scrollToProgress(0)}
+                className="text-[#C6A36B] hover:text-white transition-colors cursor-pointer text-[10px] uppercase font-mono tracking-widest flex items-center gap-1.5"
+              >
+                <span>Replay Walkthrough</span>
+                <span className="text-xs">↑</span>
+              </button>
               <span className="text-[9.5px] sm:text-[10px] text-[#F4EBDD]/40">
                 © 2026 NAMASTE KALYAN. ALL RIGHTS RESERVED.
               </span>
