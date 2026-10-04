@@ -24,6 +24,9 @@ html, body {
   color: #F4EBDD;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Discreet luxury scrollbar */
@@ -31,71 +34,125 @@ html, body {
   width: 4px;
 }
 
-/* Localized feathered cinematic gradients — invisible backdrops for maximum text legibility */
+/* Localized feathered cinematic gradients — natural atmospheric lighting treatment */
+.cinematic-grad-opening,
+.cinematic-grad-left,
+.cinematic-grad-right,
+.cinematic-grad-arrival {
+  /* Mobile (default): Full-width multi-stop vertical lighting scrim — NO oval, spotlight, or card boundaries */
+  background: 
+    linear-gradient(
+      rgba(18, 11, 9, 0.22),
+      rgba(18, 11, 9, 0.22)
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(18, 11, 9, 0.18) 0%,
+      rgba(28, 18, 15, 0.38) 16%,
+      rgba(28, 18, 15, 0.74) 38%,
+      rgba(28, 18, 15, 0.82) 56%,
+      rgba(28, 18, 15, 0.48) 76%,
+      rgba(18, 11, 9, 0.20) 90%,
+      transparent 100%
+    );
+}
+
 .cinematic-grad-opening {
-  background: radial-gradient(
-    ellipse 75% 65% at 50% 50%,
-    rgba(18, 11, 9, 0.88) 0%,
-    rgba(28, 18, 15, 0.72) 40%,
-    rgba(28, 18, 15, 0.3) 70%,
-    transparent 100%
-  );
-}
-
-.cinematic-grad-left {
-  background: radial-gradient(
-    ellipse 70% 60% at 24% 50%,
-    rgba(18, 11, 9, 0.92) 0%,
-    rgba(28, 18, 15, 0.78) 35%,
-    rgba(28, 18, 15, 0.35) 65%,
-    transparent 100%
-  ),
-  linear-gradient(
-    to right,
-    rgba(18, 11, 9, 0.88) 0%,
-    rgba(18, 11, 9, 0.68) 28%,
-    rgba(28, 18, 15, 0.25) 58%,
-    transparent 78%
-  );
-}
-
-.cinematic-grad-right {
-  background: radial-gradient(
-    ellipse 70% 60% at 76% 50%,
-    rgba(18, 11, 9, 0.92) 0%,
-    rgba(28, 18, 15, 0.78) 35%,
-    rgba(28, 18, 15, 0.35) 65%,
-    transparent 100%
-  ),
-  linear-gradient(
-    to left,
-    rgba(18, 11, 9, 0.88) 0%,
-    rgba(18, 11, 9, 0.68) 28%,
-    rgba(28, 18, 15, 0.25) 58%,
-    transparent 78%
-  );
+  background: 
+    linear-gradient(
+      rgba(18, 11, 9, 0.20),
+      rgba(18, 11, 9, 0.20)
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(18, 11, 9, 0.55) 0%,
+      rgba(28, 18, 15, 0.78) 30%,
+      rgba(28, 18, 15, 0.82) 52%,
+      rgba(28, 18, 15, 0.58) 74%,
+      rgba(18, 11, 9, 0.35) 90%,
+      rgba(18, 11, 9, 0.20) 100%
+    );
 }
 
 .cinematic-grad-arrival {
-  background: radial-gradient(
-    ellipse 85% 70% at 50% 90%,
-    rgba(18, 11, 9, 0.96) 0%,
-    rgba(28, 18, 15, 0.85) 45%,
-    rgba(28, 18, 15, 0.4) 75%,
-    transparent 100%
-  );
+  background: 
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(18, 11, 9, 0.40) 25%,
+      rgba(18, 11, 9, 0.88) 55%,
+      rgba(18, 11, 9, 0.98) 85%,
+      #120B09 100%
+    );
 }
 
-@media (max-width: 767px) {
-  .cinematic-grad-left,
+/* Desktop Art Direction (768px and above): Broad, seamless directional gradients */
+@media (min-width: 768px) {
+  .cinematic-grad-opening {
+    background: 
+      radial-gradient(
+        ellipse 90% 70% at 50% 50%,
+        rgba(18, 11, 9, 0.86) 0%,
+        rgba(28, 18, 15, 0.68) 42%,
+        rgba(28, 18, 15, 0.25) 72%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(18, 11, 9, 0.6) 0%,
+        transparent 28%,
+        transparent 72%,
+        rgba(18, 11, 9, 0.7) 100%
+      );
+  }
+
+  .cinematic-grad-left {
+    background: 
+      linear-gradient(
+        to right,
+        rgba(18, 11, 9, 0.92) 0%,
+        rgba(18, 11, 9, 0.82) 28%,
+        rgba(28, 18, 15, 0.50) 52%,
+        rgba(28, 18, 15, 0.15) 74%,
+        transparent 92%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(18, 11, 9, 0.5) 0%,
+        transparent 20%,
+        transparent 80%,
+        rgba(18, 11, 9, 0.5) 100%
+      );
+  }
+
   .cinematic-grad-right {
-    background: radial-gradient(
-      ellipse 92% 78% at 50% 50%,
-      rgba(18, 11, 9, 0.92) 0%,
-      rgba(28, 18, 15, 0.78) 45%,
-      rgba(28, 18, 15, 0.3) 78%,
-      transparent 100%
-    );
+    background: 
+      linear-gradient(
+        to left,
+        rgba(18, 11, 9, 0.92) 0%,
+        rgba(18, 11, 9, 0.82) 28%,
+        rgba(28, 18, 15, 0.50) 52%,
+        rgba(28, 18, 15, 0.15) 74%,
+        transparent 92%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(18, 11, 9, 0.5) 0%,
+        transparent 20%,
+        transparent 80%,
+        rgba(18, 11, 9, 0.5) 100%
+      );
+  }
+
+  .cinematic-grad-arrival {
+    background: 
+      linear-gradient(
+        to top,
+        #120B09 0%,
+        rgba(18, 11, 9, 0.96) 35%,
+        rgba(28, 18, 15, 0.80) 65%,
+        transparent 100%
+      );
   }
 }
 

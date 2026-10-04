@@ -120,7 +120,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#1C120F] text-[#F4EBDD] selection:bg-[#C76A27] selection:text-white font-sans">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#1C120F] text-[#F4EBDD] selection:bg-[#C76A27] selection:text-white font-sans">
       {/* Loading Screen */}
       {!hasEntered && (
         <LoadingScreen
